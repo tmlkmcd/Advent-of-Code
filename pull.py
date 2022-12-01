@@ -5,7 +5,7 @@ import os
 import requests
 from datetime import datetime
 
-year = '2018'
+year = '2023'
 date = -1
 
 for arg in sys.argv:
@@ -38,7 +38,10 @@ with open(f'{dir_name}/in.txt', 'a') as ff:
     uri = f'https://adventofcode.com/{year}/day/{date[1] if date[0] == "0" else date}/input'
     puzzle_input = requests.get(
         uri,
-        cookies={'session': open('cookie.txt', 'r').read()}
+        cookies={'session': open('cookie.txt', 'r').read()},
+        headers={
+            'User-Agent': 'https://github.com/tmlkmcd/AoC-2022/blob/main/pull.py by rejectmusician@hotmail.co.uk pls lmk if this is no good'
+        }
     ).text
 
     if "log in" in puzzle_input:
