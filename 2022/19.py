@@ -74,12 +74,12 @@ class Outcome:
             obsidian_robot=self.obsidian_robot if obsidian_robot is None else obsidian_robot,
             geode_robot=self.geode_robot if geode_robot is None else geode_robot,
             time=self.time + time_taken,
-            precursors=self.precursors + [hash(self)]
+            precursors=self.precursors + [self.state()]
         )
 
     def propagate(self, examined):
         global production_levels
-        if hash(self) in examined: return []
+        if self.state() in examined: return []
 
         possibilities = []
 
