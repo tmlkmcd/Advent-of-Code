@@ -1,6 +1,7 @@
 cookie.txt
 .idea
 in*.txt
+inputs/
 
 # Rust
 target/
