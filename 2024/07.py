@@ -1,5 +1,9 @@
+import time
+
 with open("inputs/2024/07.txt", "r") as f:
     content = f.read().split('\n')
+
+start = time.time()
 
 
 def parse_line(line):
@@ -23,8 +27,12 @@ pt1, pt2 = 0, 0
 for i, line in enumerate(calibrations):
     if i % 20 == 0: print(i, '/', len(calibrations))
     target, operands = line
-    if try_operation(target, operands[0], operands[1:]): pt1 += target
-    if try_operation(target, operands[0], operands[1:], 2): pt2 += target
+    if try_operation(target, operands[0], operands[1:]):
+        pt1 += target
+        pt2 += target
+    elif try_operation(target, operands[0], operands[1:], 2):
+        pt2 += target
 
 print('part 1:', pt1)
 print('part 2:', pt2)
+print('finished in:', time.time() - start)
